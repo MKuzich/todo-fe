@@ -8,5 +8,5 @@ export const COLORS = {
   row: '#e4e9ed',
   toggler: '#30ba67',
   overlay: 'rgba(0, 0, 0, 0.8)',
-  disabled: '#b8b9ba'
+  disabled: '#b8b9ba',
 };

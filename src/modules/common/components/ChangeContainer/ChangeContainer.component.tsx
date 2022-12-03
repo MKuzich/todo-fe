@@ -9,7 +9,7 @@ import {
   FormWrapper,
   Button,
   ButtonsWrapper,
-  StyledLink
+  StyledLink,
 } from './ChangeContainer.styled';
 import { IPasswords } from '../../types/user.types';
 import { ROUTER_KEYS } from '../../consts/app-keys.const';
@@ -27,11 +27,17 @@ export const ChangeContainer: React.FC = () => {
     }
   }, [isSuccess]);
 
-  const initialValues: IPasswords = { email: '', oldPassword: '', newPassword: '' };
+  const initialValues: IPasswords = {
+    email: '',
+    oldPassword: '',
+    newPassword: '',
+  };
 
   const onSubmitHandler = (values: IPasswords) => {
     if (values.oldPassword === values.newPassword) {
-      toast.warn('Your passwords are equal! Please change new password for request!');
+      toast.warn(
+        'Your passwords are equal! Please change new password for request!'
+      );
       return;
     }
     mutateAsync(values);

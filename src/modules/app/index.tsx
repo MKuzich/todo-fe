@@ -17,9 +17,9 @@ const queryClient = new QueryClient({
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
-      cacheTime: Infinity
-    }
-  }
+      cacheTime: Infinity,
+    },
+  },
 });
 
 const AppContainer = () => (
@@ -27,7 +27,11 @@ const AppContainer = () => (
     <Styled.GlobalStyles />
     <QueryClientProvider client={queryClient}>
       <MainRouter />
-      <ToastContainer autoClose={2500} position="bottom-right" theme="colored" />
+      <ToastContainer
+        autoClose={2500}
+        position="bottom-right"
+        theme="colored"
+      />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </ThemeProvider>

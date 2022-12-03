@@ -7,7 +7,10 @@ class UserService extends HttpService {
   }
 
   public async register(body: IUserLogin) {
-    const { data } = await this.post({ url: this.creatPathUrl('register'), body });
+    const { data } = await this.post({
+      url: this.creatPathUrl('register'),
+      body,
+    });
     return data;
   }
 
@@ -17,12 +20,18 @@ class UserService extends HttpService {
   }
 
   public async logout() {
-    const { data } = await this.post({ url: this.creatPathUrl('logout'), body: '' });
+    const { data } = await this.post({
+      url: this.creatPathUrl('logout'),
+      body: '',
+    });
     return data;
   }
 
   public async change(body: IPasswords) {
-    const { data } = await this.patch({ url: this.creatPathUrl('change'), body });
+    const { data } = await this.patch({
+      url: this.creatPathUrl('change'),
+      body,
+    });
     return data;
   }
 }

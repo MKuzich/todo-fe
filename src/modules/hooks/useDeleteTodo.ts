@@ -12,6 +12,6 @@ export const useDeleteTodo = (id: string) => {
     },
     onError: (error: IAxiosError) => {
       toast.error(error.response.data.message);
-    }
+    },
   });
 };

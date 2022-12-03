@@ -11,7 +11,9 @@ const TodoPageContainer: React.FC = () => {
 
   return (
     <section>
-      <Container>{isSuccess ? <TodoDetailed todo={data} /> : <div>Error ...</div>}</Container>
+      <Container>
+        {isSuccess ? <TodoDetailed todo={data} /> : <div>Error ...</div>}
+      </Container>
     </section>
   );
 };

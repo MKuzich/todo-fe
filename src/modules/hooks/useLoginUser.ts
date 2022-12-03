@@ -14,6 +14,6 @@ export const useLoginUser = () => {
     },
     onError: (error: IAxiosError) => {
       toast.error(error.response.data.message);
-    }
+    },
   });
 };

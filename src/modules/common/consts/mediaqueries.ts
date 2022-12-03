@@ -4,7 +4,7 @@ export const size = {
   tabletMax: '767px',
   desktopMin: '768px',
   desktopMid: '1280px',
-  desktopMax: '2560px'
+  desktopMax: '2560px',
 };
 
 export const device = {
@@ -13,5 +13,5 @@ export const device = {
   tabletOnly: `@media screen and (min-width: ${size.tabletMin}) and (max-width: ${size.tabletMax})`,
   desktop: `@media screen and (min-width: ${size.desktopMin}) and (max-width: ${size.desktopMax})`,
   desktopMid: `@media screen and (min-width: ${size.desktopMid}) and (max-width: ${size.desktopMax})`,
-  notDesktop: `@media screen and (max-width: ${size.tabletMax})`
+  notDesktop: `@media screen and (max-width: ${size.tabletMax})`,
 };

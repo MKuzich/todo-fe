@@ -13,6 +13,6 @@ export const useAddTodo = () => {
     },
     onError: (error: IAxiosError) => {
       toast.error(error.response.data.message);
-    }
+    },
   });
 };

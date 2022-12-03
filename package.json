@@ -59,7 +59,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:ts": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "npx eslint *.ts *.tsx --fix"
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "browserslist": {
     "production": [

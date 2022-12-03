@@ -8,5 +8,5 @@ export const useGetTodo = (id: string) =>
   useQuery([QUERY_KEYS.TODOS, id], () => todoService.getTodo(id), {
     onError: (error: IAxiosError) => {
       toast.error(error.response.data.message);
-    }
+    },
   });

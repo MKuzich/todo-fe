@@ -11,7 +11,7 @@ interface IProps {
 
 export const PrivateRoute: React.FC<IProps> = ({
   children,
-  redirectPath = ROUTER_KEYS.WELCOME
+  redirectPath = ROUTER_KEYS.WELCOME,
 }): any => {
   const value = localStorage.getItem(STORAGE_KEYS.TOKEN);
 
@@ -21,7 +21,9 @@ export const PrivateRoute: React.FC<IProps> = ({
   }
 
   if (!token) {
-    toast.info('You do not have access to this page. Register or login to your account.');
+    toast.info(
+      'You do not have access to this page. Register or login to your account.'
+    );
     return <Navigate to={redirectPath} />;
   }
   return children;

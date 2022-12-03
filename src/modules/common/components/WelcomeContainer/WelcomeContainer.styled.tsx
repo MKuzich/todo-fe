@@ -21,7 +21,8 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
-  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs} ${COLORS.shadow};
+  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs}
+    ${COLORS.shadow};
   background-color: ${COLORS.white};
   transition: ${TRANSITIONS.background}, ${TRANSITIONS.color};
   :hover,

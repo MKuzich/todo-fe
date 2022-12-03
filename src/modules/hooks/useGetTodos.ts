@@ -12,7 +12,7 @@ export const useGetTodos = () => {
     filter: 'all',
     search: '',
     page: '1',
-    limit: '10'
+    limit: '10',
   });
   const [todosFull, setTodosFull] = useState<ITodo[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +23,7 @@ export const useGetTodos = () => {
       filter: searchParams.get('filter') ?? 'all',
       search: searchParams.get('search') ?? '',
       page: searchParams.get('page') ?? '1',
-      limit: searchParams.get('limit') ?? '10'
+      limit: searchParams.get('limit') ?? '10',
     });
   }, [searchParams]);
 
@@ -35,7 +35,7 @@ export const useGetTodos = () => {
         toast.error(error.response.data.message);
       },
       select: ({ todos, total }) => ({ todos, total: Math.ceil(total / 10) }),
-      keepPreviousData: true
+      keepPreviousData: true,
     }
   );
 

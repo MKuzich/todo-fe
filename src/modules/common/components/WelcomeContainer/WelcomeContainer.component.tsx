@@ -1,5 +1,11 @@
 import React from 'react';
-import { Title, StyledLink, SecondaryLink, LinkWrapper, Wrapper } from './WelcomeContainer.styled';
+import {
+  Title,
+  StyledLink,
+  SecondaryLink,
+  LinkWrapper,
+  Wrapper,
+} from './WelcomeContainer.styled';
 import { ROUTER_KEYS } from '../../consts/app-keys.const';
 
 export const WelcomeContainer: React.FC = () => (

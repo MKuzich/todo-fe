@@ -9,7 +9,7 @@ import {
   Container,
   Item,
   StyledSwiper,
-  Paginate
+  Paginate,
 } from './TodoContainer.styled';
 import { TodoItem } from '../TodoItem';
 import { useGetTodos } from '../../../hooks/useGetTodos';
@@ -23,7 +23,9 @@ export const TodoContainer: React.FC = () => {
   const { data, isSuccess, params, todosFull, setSearchParams } = useGetTodos();
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 425px) and (max-width: 767px)' });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 425px) and (max-width: 767px)',
+  });
   const isMobile = useMediaQuery({ query: '(max-width: 424px)' });
 
   const openAddModal = () => {

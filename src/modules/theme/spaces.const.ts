@@ -11,5 +11,5 @@ export const SPACES = {
   xxl: '36px',
   xxxl: '120px',
   xxxxl: '424px',
-  xxxxxl: '2560px'
+  xxxxxl: '2560px',
 };

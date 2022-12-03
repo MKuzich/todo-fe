@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Wrapper, FilterGroup, SearchGroup, Button, Input } from './Controls.styled';
+import {
+  Wrapper,
+  FilterGroup,
+  SearchGroup,
+  Button,
+  Input,
+} from './Controls.styled';
 
 interface IProps {
   openAddModal: () => void;
@@ -12,7 +18,7 @@ export const Controls: React.FC<IProps> = ({ openAddModal }) => {
     filter: 'all',
     search: '',
     page: '1',
-    limit: '10'
+    limit: '10',
   });
 
   useEffect(() => {
@@ -20,16 +26,21 @@ export const Controls: React.FC<IProps> = ({ openAddModal }) => {
       filter: searchParams.get('filter') ?? 'all',
       search: searchParams.get('search') ?? '',
       page: searchParams.get('page') ?? '1',
-      limit: searchParams.get('limit') ?? '10'
+      limit: searchParams.get('limit') ?? '10',
     });
   }, [searchParams]);
 
   const onBtnClickHandler = (e: React.MouseEvent) => {
-    const filterName = ((e.target as HTMLButtonElement).textContent ?? 'All').toLowerCase();
+    const filterName = (
+      (e.target as HTMLButtonElement).textContent ?? 'All'
+    ).toLowerCase();
     setSearchParams({ ...params, filter: filterName, page: '1' });
   };
   const onInputChange = (e: React.ChangeEvent) => {
-    setSearchParams({ ...params, search: (e.target as HTMLInputElement).value });
+    setSearchParams({
+      ...params,
+      search: (e.target as HTMLInputElement).value,
+    });
   };
   return (
     <Wrapper>

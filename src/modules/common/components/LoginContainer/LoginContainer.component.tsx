@@ -8,7 +8,7 @@ import {
   FormWrapper,
   Button,
   ButtonsWrapper,
-  StyledLink
+  StyledLink,
 } from './LoginContainer.styled';
 import { IUserLogin } from '../../types/user.types';
 import { ROUTER_KEYS } from '../../consts/app-keys.const';

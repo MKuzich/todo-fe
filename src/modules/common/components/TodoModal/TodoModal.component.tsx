@@ -13,7 +13,7 @@ import {
   ToggleGroup,
   Toggler,
   Input,
-  Check
+  Check,
 } from './TodoModal.styled';
 import { AddTodoType } from '../../types/todo.types';
 import { useAddTodo } from '../../../hooks/useAddTodo';

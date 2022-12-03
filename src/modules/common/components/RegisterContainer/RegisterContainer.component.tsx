@@ -9,7 +9,7 @@ import {
   FormWrapper,
   Button,
   ButtonsWrapper,
-  StyledLink
+  StyledLink,
 } from './RegisterContainer.styled';
 import { IUserRegister } from '../../types/user.types';
 import { ROUTER_KEYS } from '../../consts/app-keys.const';
@@ -25,7 +25,11 @@ export const RegisterContainer: React.FC = () => {
     }
   }, [isSuccess]);
 
-  const initialValues: IUserRegister = { email: '', password: '', confirmPassword: '' };
+  const initialValues: IUserRegister = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
 
   const onSubmitHandler = (values: IUserRegister) => {
     if (values.confirmPassword !== values.password) {
@@ -50,7 +54,11 @@ export const RegisterContainer: React.FC = () => {
           </FieldWrapper>
           <FieldWrapper>
             <Label htmlFor="register-confirm-password">Confirm password</Label>
-            <Input id="register-confirm-password" type="text" name="confirmPassword" />
+            <Input
+              id="register-confirm-password"
+              type="text"
+              name="confirmPassword"
+            />
           </FieldWrapper>
           <ButtonsWrapper>
             <StyledLink to={ROUTER_KEYS.WELCOME}>Back</StyledLink>

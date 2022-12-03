@@ -11,7 +11,8 @@ export const NavBtn = styled(Link)`
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs} ${COLORS.shadow};
+  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs}
+    ${COLORS.shadow};
   background-color: ${COLORS.white};
   color: ${COLORS.main};
   transition: ${TRANSITIONS.background}, ${TRANSITIONS.color};
@@ -87,7 +88,8 @@ export const Button = styled.button`
   font-size: ${SPACES.m};
   line-height: 1;
   cursor: pointer;
-  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs} ${COLORS.shadow};
+  box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs}
+    ${COLORS.shadow};
   background-color: ${COLORS.white};
   transition: ${TRANSITIONS.background}, ${TRANSITIONS.color};
   :hover,

@@ -3,7 +3,7 @@ export const STORAGE_KEYS = {
   JWT_TOKEN_STUDENT: 'JWT_TOKEN_STUDENT',
   JWT_TOKEN_INSTRUCTOR: 'JWT_TOKEN_INSTRUCTOR',
   ADDRESS: 'ADDRESS',
-  TOKEN: 'TOKEN'
+  TOKEN: 'TOKEN',
 };
 
 // React-query keys
@@ -14,7 +14,7 @@ export const QUERY_KEYS = {
   TRENDING: 'trending',
   TODOS: 'todos',
   TODOS_FULL: 'todos-full',
-  USER: 'user'
+  USER: 'user',
 };
 
 // Backend Routes
@@ -24,7 +24,7 @@ export const BACKEND_KEYS = {
   ARTICLES: 'articles',
   STATISTIC: 'statistic',
   TRENDING: 'trending',
-  FEATURED_ARTICLES: 'featured_articles'
+  FEATURED_ARTICLES: 'featured_articles',
 };
 
 export const ROUTER_KEYS = {
@@ -35,5 +35,5 @@ export const ROUTER_KEYS = {
   CHANGE: '/change',
   WELCOME: '/welcome',
   HOME: 'home',
-  AUTHORIZED: 'authorized'
+  AUTHORIZED: 'authorized',
 };

@@ -14,7 +14,11 @@ export class HttpService {
 
   public apiVersion: string;
 
-  constructor(baseUrl = 'http://localhost:4200', fetchingService = axios, apiVersion = 'api') {
+  constructor(
+    baseUrl = 'http://localhost:4200',
+    fetchingService = axios,
+    apiVersion = 'api'
+  ) {
     this.baseUrl = baseUrl;
     this.fetchingService = fetchingService;
     this.apiVersion = apiVersion;
@@ -26,11 +30,15 @@ export class HttpService {
 
   private populateTokenToHeaderConfig() {
     return {
-      Authorization: localStorage.getItem(STORAGE_KEYS.TOKEN)
+      Authorization: localStorage.getItem(STORAGE_KEYS.TOKEN),
     };
   }
 
-  private extractUrlAndDataFromConfig({ data, url, ...configWithoutDataAndUrl }: any) {
+  private extractUrlAndDataFromConfig({
+    data,
+    url,
+    ...configWithoutDataAndUrl
+  }: any) {
     return configWithoutDataAndUrl;
   }
 
@@ -38,7 +46,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.populateTokenToHeaderConfig()
+        ...this.populateTokenToHeaderConfig(),
       };
     }
     return this.fetchingService.get(
@@ -51,7 +59,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.populateTokenToHeaderConfig()
+        ...this.populateTokenToHeaderConfig(),
       };
     }
     return this.fetchingService.post(
@@ -65,7 +73,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.populateTokenToHeaderConfig()
+        ...this.populateTokenToHeaderConfig(),
       };
     }
     return this.fetchingService.put(
@@ -79,7 +87,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.populateTokenToHeaderConfig()
+        ...this.populateTokenToHeaderConfig(),
       };
     }
     return this.fetchingService.patch(
@@ -93,7 +101,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.populateTokenToHeaderConfig()
+        ...this.populateTokenToHeaderConfig(),
       };
     }
     return this.fetchingService.delete(

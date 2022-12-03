@@ -11,7 +11,7 @@ import {
   Input,
   ToggleGroup,
   Controls,
-  Button
+  Button,
 } from './TodoDetailed.styled';
 import { useChangeTodo } from '../../../hooks/useChangeTodo';
 import { useGetTodo } from '../../../hooks/useGetTodo';

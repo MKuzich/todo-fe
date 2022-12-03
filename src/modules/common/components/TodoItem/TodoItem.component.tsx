@@ -10,7 +10,7 @@ import {
   Button,
   Input,
   ToggleWrapper,
-  Label
+  Label,
 } from './TodoItem.styled';
 import { useDeleteTodo } from '../../../hooks/useDeleteTodo';
 import { useChangeTodo } from '../../../hooks/useChangeTodo';
@@ -19,10 +19,14 @@ interface IProps {
   todo: ITodo;
 }
 
-export const TodoItem: React.FC<IProps> = ({ todo: { _id, title, data, complited } }) => {
+export const TodoItem: React.FC<IProps> = ({
+  todo: { _id, title, data, complited },
+}) => {
   const deleteMutation = useDeleteTodo(_id);
   const changeMutation = useChangeTodo();
-  const isDesktopSmall = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1279px)' });
+  const isDesktopSmall = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1279px)',
+  });
   const onDeleteClick = () => {
     deleteMutation.mutate();
   };

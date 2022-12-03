@@ -12,7 +12,7 @@ interface IProps {
 export const PublicRoute: React.FC<IProps> = ({
   children,
   redirectPath = ROUTER_KEYS.ROOT,
-  restricted = true
+  restricted = true,
 }): any => {
   const [token, setToken] = useState<string | null>(null);
 
