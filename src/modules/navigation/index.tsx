@@ -11,7 +11,7 @@ import { PrivateRoute } from '../common/components/PrivateRoute';
 import { PublicRoute } from '../common/components/PublicRoute';
 
 export const MainRouter = () => (
-  <Router>
+  <Router basename="todo-fe">
     <Routes>
       <Route
         element={
