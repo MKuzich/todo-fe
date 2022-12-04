@@ -15,7 +15,7 @@ export class HttpService {
   public apiVersion: string;
 
   constructor(
-    baseUrl = 'http://localhost:4200',
+    baseUrl = 'http://todo-be.onrender.com',
     fetchingService = axios,
     apiVersion = 'api'
   ) {
