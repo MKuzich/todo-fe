@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { TableCell, Stack, Switch, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { AiOutlineDelete } from 'react-icons/ai';
@@ -17,6 +18,8 @@ export const TodoItem: React.FC<IProps> = ({
 }) => {
   const deleteMutation = useDeleteTodo(_id);
   const changeMutation = useChangeTodo();
+  const isTablet = useMediaQuery({ query: '(max-width: 767px)' });
+
   const onDeleteClick = () => {
     deleteMutation.mutate();
   };
@@ -26,35 +29,39 @@ export const TodoItem: React.FC<IProps> = ({
   };
   return (
     <>
-      <TableCell>{title}</TableCell>
-      <TableCell>{data}</TableCell>
-      <TableCell>
-        <Stack direction="row" spacing={0.5}>
-          <IconButton
-            color="primary"
-            size="small"
-            component={Link}
-            to={`${_id}`}
-            replace
-          >
-            <HiOutlineDocumentText />
-          </IconButton>
-          <IconButton
-            color="primary"
-            size="small"
-            type="button"
-            onClick={onDeleteClick}
-          >
-            <AiOutlineDelete />
-          </IconButton>
-          <Switch
-            size="small"
-            type="checkbox"
-            checked={complited}
-            onChange={onTogglerClick}
-          />
-        </Stack>
-      </TableCell>
+      {!isTablet && (
+        <>
+          <TableCell>{title}</TableCell>
+          <TableCell>{data}</TableCell>
+          <TableCell>
+            <Stack direction="row" spacing={0.5}>
+              <IconButton
+                color="primary"
+                size="small"
+                component={Link}
+                to={`${_id}`}
+                replace
+              >
+                <HiOutlineDocumentText />
+              </IconButton>
+              <IconButton
+                color="primary"
+                size="small"
+                type="button"
+                onClick={onDeleteClick}
+              >
+                <AiOutlineDelete />
+              </IconButton>
+              <Switch
+                size="small"
+                type="checkbox"
+                checked={complited}
+                onChange={onTogglerClick}
+              />
+            </Stack>
+          </TableCell>
+        </>
+      )}
       {/* <Title>{title}</Title> */}
       {/* <Description>{data}</Description> */}
       {/* <Actions>
