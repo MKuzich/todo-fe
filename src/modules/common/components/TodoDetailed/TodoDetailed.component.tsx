@@ -7,6 +7,8 @@ import {
   Typography,
   Switch,
   FormControlLabel,
+  Box,
+  CircularProgress,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { ITodo } from '../../types/todo.types';
@@ -53,7 +55,7 @@ export const TodoDetailed: React.FC<IProps> = ({ todo: { _id } }) => {
             <Typography variant="h6" component="h2">
               Description:
             </Typography>
-            <Typography variant="body1" component="h2">
+            <Typography variant="body1" component="p">
               {data.data}
             </Typography>
           </Stack>
@@ -88,5 +90,16 @@ export const TodoDetailed: React.FC<IProps> = ({ todo: { _id } }) => {
       </Paper>
     );
   }
-  return <div>Loading....</div>;
+  return (
+    <Box
+      sx={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      py={8}
+    >
+      <CircularProgress />
+    </Box>
+  );
 };

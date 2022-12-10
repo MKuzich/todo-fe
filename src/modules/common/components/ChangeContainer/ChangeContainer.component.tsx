@@ -96,7 +96,7 @@ export const ChangeContainer: React.FC = () => {
             variant="outlined"
             label="New password"
             type="password"
-            name="password"
+            name="newPassword"
             value={formik.values.newPassword}
             onChange={formik.handleChange}
             error={

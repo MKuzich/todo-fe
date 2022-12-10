@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import {
   ButtonGroup,
   Button,
@@ -21,6 +22,7 @@ export const Controls: React.FC<IProps> = ({ openAddModal }) => {
     page: '1',
     limit: '10',
   });
+  const isMobile = useMediaQuery({ query: '(max-width: 424px)' });
 
   useEffect(() => {
     setParams({
@@ -51,7 +53,7 @@ export const Controls: React.FC<IProps> = ({ openAddModal }) => {
       spacing={2}
       mb={2}
     >
-      <ButtonGroup variant="outlined">
+      <ButtonGroup variant="outlined" size={isMobile ? 'small' : 'medium'}>
         <Button
           type="button"
           variant={params.filter === 'all' ? 'contained' : 'outlined'}

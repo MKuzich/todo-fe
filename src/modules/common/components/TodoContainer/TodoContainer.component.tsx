@@ -11,6 +11,8 @@ import {
   TableCell,
   Paper,
   TablePagination,
+  CircularProgress,
+  Box,
 } from '@mui/material';
 import { TodoList, Item, StyledSwiper } from './TodoContainer.styled';
 import { TodoItem } from '../TodoItem';
@@ -22,11 +24,12 @@ import 'swiper/css';
 import { ITodo } from '../../types/todo.types';
 
 export const TodoContainer: React.FC = () => {
-  const { data, isSuccess, params, todosFull, setSearchParams } = useGetTodos();
+  const { data, isSuccess, isLoading, params, todosFull, setSearchParams } =
+    useGetTodos();
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
-  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 900px)' });
   const isTablet = useMediaQuery({
-    query: '(min-width: 425px) and (max-width: 767px)',
+    query: '(min-width: 425px) and (max-width: 899px)',
   });
   const isMobile = useMediaQuery({ query: '(max-width: 424px)' });
 
@@ -61,6 +64,18 @@ export const TodoContainer: React.FC = () => {
     <>
       <MobileHeader />
       <Controls openAddModal={openAddModal} />
+      {isLoading && (
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+          py={8}
+        >
+          <CircularProgress />
+        </Box>
+      )}
       {isDesktop && (
         <TableContainer component={Paper} elevation={6}>
           <Table size="small" stickyHeader>

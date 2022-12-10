@@ -27,7 +27,7 @@ export const useGetTodos = () => {
     });
   }, [searchParams]);
 
-  const { data, isSuccess } = useQuery(
+  const { data, isSuccess, isLoading } = useQuery(
     [QUERY_KEYS.TODOS, params],
     () => todoService.getAllTodos(filter, search, page, limit),
     {
@@ -51,5 +51,5 @@ export const useGetTodos = () => {
     }
   }, [data, isSuccess]);
 
-  return { data, isSuccess, params, todosFull, setSearchParams };
+  return { data, isSuccess, isLoading, params, todosFull, setSearchParams };
 };
