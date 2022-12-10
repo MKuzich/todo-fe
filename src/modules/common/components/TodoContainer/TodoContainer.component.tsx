@@ -3,14 +3,15 @@ import { useMediaQuery } from 'react-responsive';
 import { SwiperSlide } from 'swiper/react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {
-  HeadWrapper,
-  TodoList,
-  HeadTitle,
-  Container,
-  Item,
-  StyledSwiper,
-  Paginate,
-} from './TodoContainer.styled';
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+  Paper,
+} from '@mui/material';
+import { TodoList, Item, StyledSwiper, Paginate } from './TodoContainer.styled';
 import { TodoItem } from '../TodoItem';
 import { useGetTodos } from '../../../hooks/useGetTodos';
 import { Controls } from '../Controls';
@@ -49,55 +50,58 @@ export const TodoContainer: React.FC = () => {
     <>
       <MobileHeader />
       <Controls openAddModal={openAddModal} />
-      <Container>
-        {isDesktop && (
-          <HeadWrapper>
-            <HeadTitle>Todo title</HeadTitle>
-            <HeadTitle>Description</HeadTitle>
-            <HeadTitle>Actions</HeadTitle>
-          </HeadWrapper>
-        )}
-        {isMobile && isSuccess && (
-          <InfiniteScroll
-            dataLength={todosFull.length}
-            next={handleSwipeNext}
-            hasMore={data?.total !== Number(params.page)}
-            loader={<h4>Loading...</h4>}
-            endMessage={
-              <p style={{ textAlign: 'center', marginTop: '20px' }}>
-                <b>Yay! You have seen it all</b>
-              </p>
-            }
-          >
-            <TodoList>
-              {todosFull.map((todo: ITodo) => (
-                <Item key={todo._id}>
-                  <TodoItem todo={todo} />
-                </Item>
-              ))}
-            </TodoList>
-          </InfiniteScroll>
-        )}
-        {isTablet && isSuccess && (
-          <StyledSwiper spaceBetween={100} onReachEnd={handleonReachEnd}>
-            {todosFull.map((todo: ITodo) => (
-              <SwiperSlide key={todo._id}>
-                <TodoItem todo={todo} />
-              </SwiperSlide>
-            ))}
-          </StyledSwiper>
-        )}
-        {isDesktop && (
+      {isDesktop && (
+        <TableContainer component={Paper} elevation={3}>
+          <Table size="small" stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableCell>Todo title</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell align="center">Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {isSuccess &&
+                data?.todos.map((todo: ITodo) => (
+                  <TableRow key={todo._id}>
+                    <TodoItem todo={todo} />
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
+      {isMobile && isSuccess && (
+        <InfiniteScroll
+          dataLength={todosFull.length}
+          next={handleSwipeNext}
+          hasMore={data?.total !== Number(params.page)}
+          loader={<h4>Loading...</h4>}
+          endMessage={
+            <p style={{ textAlign: 'center', marginTop: '20px' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
           <TodoList>
-            {isSuccess &&
-              data?.todos.map((todo: ITodo) => (
-                <Item key={todo._id}>
-                  <TodoItem todo={todo} />
-                </Item>
-              ))}
+            {todosFull.map((todo: ITodo) => (
+              <Item key={todo._id}>
+                <TodoItem todo={todo} />
+              </Item>
+            ))}
           </TodoList>
-        )}
-      </Container>
+        </InfiniteScroll>
+      )}
+      {isTablet && isSuccess && (
+        <StyledSwiper spaceBetween={100} onReachEnd={handleonReachEnd}>
+          {todosFull.map((todo: ITodo) => (
+            <SwiperSlide key={todo._id}>
+              <TodoItem todo={todo} />
+            </SwiperSlide>
+          ))}
+        </StyledSwiper>
+      )}
+
       {isDesktop && (
         <Paginate
           breakLabel="..."

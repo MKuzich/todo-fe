@@ -1,17 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { TableCell, Stack, Switch, IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { HiOutlineDocumentText } from 'react-icons/hi';
 import { ITodo } from '../../types/todo.types';
-import {
-  NavBtn,
-  Title,
-  Description,
-  Actions,
-  Button,
-  Input,
-  ToggleWrapper,
-  Label,
-} from './TodoItem.styled';
 import { useDeleteTodo } from '../../../hooks/useDeleteTodo';
 import { useChangeTodo } from '../../../hooks/useChangeTodo';
 
@@ -24,9 +17,6 @@ export const TodoItem: React.FC<IProps> = ({
 }) => {
   const deleteMutation = useDeleteTodo(_id);
   const changeMutation = useChangeTodo();
-  const isDesktopSmall = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1279px)',
-  });
   const onDeleteClick = () => {
     deleteMutation.mutate();
   };
@@ -36,9 +26,38 @@ export const TodoItem: React.FC<IProps> = ({
   };
   return (
     <>
-      <Title>{title}</Title>
-      <Description>{data}</Description>
-      <Actions>
+      <TableCell>{title}</TableCell>
+      <TableCell>{data}</TableCell>
+      <TableCell>
+        <Stack direction="row" spacing={0.5}>
+          <IconButton
+            color="primary"
+            size="small"
+            component={Link}
+            to={`${_id}`}
+            replace
+          >
+            <HiOutlineDocumentText />
+          </IconButton>
+          <IconButton
+            color="primary"
+            size="small"
+            type="button"
+            onClick={onDeleteClick}
+          >
+            <AiOutlineDelete />
+          </IconButton>
+          <Switch
+            size="small"
+            type="checkbox"
+            checked={complited}
+            onChange={onTogglerClick}
+          />
+        </Stack>
+      </TableCell>
+      {/* <Title>{title}</Title> */}
+      {/* <Description>{data}</Description> */}
+      {/* <Actions>
         <NavBtn to={`${_id}`} replace>
           {isDesktopSmall ? 'V' : 'View'}
         </NavBtn>
@@ -54,7 +73,7 @@ export const TodoItem: React.FC<IProps> = ({
           />
           <Label htmlFor={`${_id}complited`} onChange={onTogglerClick} />
         </ToggleWrapper>
-      </Actions>
+      </Actions> */}
     </>
   );
 };

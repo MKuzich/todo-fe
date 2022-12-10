@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
-  Wrapper,
-  FilterGroup,
-  SearchGroup,
+  ButtonGroup,
   Button,
-  Input,
-} from './Controls.styled';
+  IconButton,
+  TextField,
+  Stack,
+} from '@mui/material';
+import { VscDiffAdded } from 'react-icons/vsc';
 
 interface IProps {
   openAddModal: () => void;
@@ -43,27 +44,55 @@ export const Controls: React.FC<IProps> = ({ openAddModal }) => {
     });
   };
   return (
-    <Wrapper>
-      <FilterGroup>
-        <Button type="button" onClick={onBtnClickHandler}>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="space-between"
+      alignItems="flex-end"
+      spacing={2}
+      mb={2}
+    >
+      <ButtonGroup variant="outlined">
+        <Button
+          type="button"
+          variant={params.filter === 'all' ? 'contained' : 'outlined'}
+          onClick={onBtnClickHandler}
+        >
           All
         </Button>
-        <Button type="button" onClick={onBtnClickHandler}>
+        <Button
+          type="button"
+          variant={params.filter === 'private' ? 'contained' : 'outlined'}
+          onClick={onBtnClickHandler}
+        >
           Private
         </Button>
-        <Button type="button" onClick={onBtnClickHandler}>
+        <Button
+          type="button"
+          variant={params.filter === 'public' ? 'contained' : 'outlined'}
+          onClick={onBtnClickHandler}
+        >
           Public
         </Button>
-        <Button type="button" onClick={onBtnClickHandler}>
+        <Button
+          type="button"
+          variant={params.filter === 'complete' ? 'contained' : 'outlined'}
+          onClick={onBtnClickHandler}
+        >
           Complete
         </Button>
-      </FilterGroup>
-      <SearchGroup>
-        <Button type="button" onClick={() => openAddModal()}>
-          AddTodo
-        </Button>
-        <Input type="text" placeholder="search" onChange={onInputChange} />
-      </SearchGroup>
-    </Wrapper>
+      </ButtonGroup>
+      <Stack direction="row" spacing={1}>
+        <IconButton type="button" onClick={() => openAddModal()}>
+          <VscDiffAdded />
+        </IconButton>
+        <TextField
+          type="text"
+          label="search"
+          variant="outlined"
+          size="small"
+          onChange={onInputChange}
+        />
+      </Stack>
+    </Stack>
   );
 };

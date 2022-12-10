@@ -1,15 +1,12 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { CntrlWrapper, Button } from './MobileHeader.styled';
+import { Link } from 'react-router-dom';
+import { Stack, Button } from '@mui/material';
 import { ROUTER_KEYS } from '../../consts/app-keys.const';
 
-export const MobileHeader = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 424px)' });
-
-  return (
-    <CntrlWrapper>
-      {isMobile && <Button to="/">Todo List</Button>}
-      <Button to={ROUTER_KEYS.CHANGE}>My Profile</Button>
-    </CntrlWrapper>
-  );
-};
+export const MobileHeader = () => (
+  <Stack direction="row" justifyContent="flex-end" mb={5}>
+    <Button component={Link} variant="outlined" to={ROUTER_KEYS.CHANGE}>
+      My Profile
+    </Button>
+  </Stack>
+);

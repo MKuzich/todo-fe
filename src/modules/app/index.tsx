@@ -1,12 +1,12 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MainRouter } from '../navigation';
 
-import * as theme from '../theme';
+import { theme } from '../theme/theme';
 import * as Styled from './app.styled';
 import '../../style.css';
 
