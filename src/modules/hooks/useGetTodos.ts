@@ -34,7 +34,7 @@ export const useGetTodos = () => {
       onError: (error: IAxiosError) => {
         toast.error(error.response.data.message);
       },
-      select: ({ todos, total }) => ({ todos, total: Math.ceil(total / 10) }),
+      // select: ({ todos, total }) => ({ todos, total: Math.ceil(total / 10) }),
       keepPreviousData: true,
     }
   );

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Swiper } from 'swiper/react';
-import ReactPaginate from 'react-paginate';
 
 import { device } from '../../consts/mediaqueries';
-import { COLORS, SPACES, TRANSITIONS } from '../../../theme';
+import { COLORS, SPACES } from '../../../theme';
 
 export const StyledSwiper = styled(Swiper)`
   left: ${SPACES.xxxs};
@@ -62,58 +61,5 @@ export const HeadTitle = styled.h2`
   }
   ${device.desktopMid} {
     font-size: ${SPACES.xl};
-  }
-`;
-
-export const Paginate = styled(ReactPaginate)`
-  display: flex;
-  justify-content: start;
-  flex-direction: row;
-  gap: ${SPACES.xs};
-  list-style-type: none;
-  li a {
-    padding: ${SPACES.s} ${SPACES.s};
-    border: solid ${COLORS.main} ${SPACES.xxs};
-    font-size: ${SPACES.l};
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: ${SPACES.xs} ${SPACES.xs} ${SPACES.xs} ${SPACES.xxxs}
-      ${COLORS.shadow};
-    background-color: ${COLORS.white};
-    transition: ${TRANSITIONS.background}, ${TRANSITIONS.color};
-    :hover,
-    :focus {
-      background-color: ${COLORS.hover};
-      color: ${COLORS.white};
-    }
-    ${device.tablet} {
-      font-size: ${SPACES.m};
-    }
-    ${device.desktop} {
-      font-size: ${SPACES.l};
-    }
-    ${device.desktopMid} {
-      font-size: ${SPACES.xl};
-      padding: ${SPACES.s} ${SPACES.s};
-    }
-  }
-
-  li.selected a {
-    background-color: ${COLORS.hover};
-    color: ${COLORS.white};
-    min-width: ${SPACES.xxl};
-  }
-  li.disabled a {
-    color: ${COLORS.disabled};
-    border-color: ${COLORS.disabled};
-    :hover,
-    :focus {
-      background-color: ${COLORS.white};
-      color: ${COLORS.disabled};
-    }
-  }
-  li.disable,
-  li.disabled a {
-    cursor: default;
   }
 `;

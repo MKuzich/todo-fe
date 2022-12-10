@@ -1,18 +1,15 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { ITodo } from '../../types/todo.types';
 import {
-  MainTitle,
-  Title,
-  Description,
-  Label,
-  ToggleWrapper,
-  Toggler,
-  Input,
-  ToggleGroup,
-  Controls,
   Button,
-} from './TodoDetailed.styled';
+  Paper,
+  Stack,
+  Typography,
+  Switch,
+  FormControlLabel,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
+import { ITodo } from '../../types/todo.types';
 import { useChangeTodo } from '../../../hooks/useChangeTodo';
 import { useGetTodo } from '../../../hooks/useGetTodo';
 import { MobileHeader } from '../MobileHeader';
@@ -41,39 +38,54 @@ export const TodoDetailed: React.FC<IProps> = ({ todo: { _id } }) => {
 
   if (isSuccess) {
     return (
-      <>
-        {isMobile && <MobileHeader />}
-        <MainTitle>{data.title}</MainTitle>
-        <Title>Description:</Title>
-        <Description>{data.data}</Description>
-        <Controls>
-          <ToggleGroup>
-            <Label htmlFor={`${_id}complited`}>Complete</Label>
-            <ToggleWrapper>
-              <Input
-                id={`${_id}complited`}
-                type="checkbox"
-                checked={data.complited}
-                onChange={onTogglerCompleteClick}
-              />
-              <Toggler onClick={onTogglerCompleteClick} />
-            </ToggleWrapper>
-          </ToggleGroup>
-          <ToggleGroup>
-            <Label htmlFor={`${_id}public`}>Private</Label>
-            <ToggleWrapper>
-              <Input
-                id={`${_id}public`}
-                type="checkbox"
-                checked={data.public}
-                onChange={onTogglerPrivateClick}
-              />
-              <Toggler onClick={onTogglerPrivateClick} />
-            </ToggleWrapper>
-          </ToggleGroup>
-        </Controls>
-        <Button to="/">Back</Button>
-      </>
+      <Paper elevation={6}>
+        <Stack
+          p={{ xs: 2, sm: 4, md: 8 }}
+          spacing={4}
+          justifyContent="start"
+          alignItems="start"
+        >
+          {isMobile && <MobileHeader />}
+          <Typography variant="h4" component="h1">
+            {data.title}
+          </Typography>
+          <Stack spacing={1}>
+            <Typography variant="h6" component="h2">
+              Description:
+            </Typography>
+            <Typography variant="body1" component="h2">
+              {data.data}
+            </Typography>
+          </Stack>
+
+          <Stack pl={4} direction="column">
+            <FormControlLabel
+              control={
+                <Switch
+                  type="checkbox"
+                  checked={data.complited}
+                  onChange={onTogglerCompleteClick}
+                />
+              }
+              label="Complete"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  type="checkbox"
+                  checked={!data.public}
+                  onChange={onTogglerPrivateClick}
+                />
+              }
+              label="Private"
+            />
+          </Stack>
+
+          <Button variant="outlined" component={Link} to="/">
+            Back
+          </Button>
+        </Stack>
+      </Paper>
     );
   }
   return <div>Loading....</div>;

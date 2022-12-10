@@ -10,8 +10,9 @@ import {
   TableBody,
   TableCell,
   Paper,
+  TablePagination,
 } from '@mui/material';
-import { TodoList, Item, StyledSwiper, Paginate } from './TodoContainer.styled';
+import { TodoList, Item, StyledSwiper } from './TodoContainer.styled';
 import { TodoItem } from '../TodoItem';
 import { useGetTodos } from '../../../hooks/useGetTodos';
 import { Controls } from '../Controls';
@@ -33,8 +34,18 @@ export const TodoContainer: React.FC = () => {
     setShowAddModal(true);
   };
 
-  const handlePageClick = (event: any) => {
-    setSearchParams({ ...params, page: (event.selected + 1).toString() });
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchParams({
+      ...params,
+      page: '1',
+      limit: parseInt(event.target.value, 10).toString(),
+    });
+  };
+
+  const handleChangePage = (_event: unknown, newPage: number) => {
+    setSearchParams({ ...params, page: (newPage + 1).toString() });
   };
 
   const handleSwipeNext = () => {
@@ -51,7 +62,7 @@ export const TodoContainer: React.FC = () => {
       <MobileHeader />
       <Controls openAddModal={openAddModal} />
       {isDesktop && (
-        <TableContainer component={Paper} elevation={3}>
+        <TableContainer component={Paper} elevation={6}>
           <Table size="small" stickyHeader>
             <TableHead>
               <TableRow>
@@ -103,16 +114,14 @@ export const TodoContainer: React.FC = () => {
       )}
 
       {isDesktop && (
-        <Paginate
-          breakLabel="..."
-          nextLabel="next"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={1}
-          pageCount={data?.total ?? 1}
-          forcePage={Number(params.page) - 1}
-          previousLabel="previous"
-          activeClassName="selected"
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={data?.total ?? -1}
+          rowsPerPage={Number(params.limit) ?? 10}
+          page={Number(params.page) - 1 ?? 0}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
         />
       )}
       {showAddModal && <TodoModal closeModal={() => setShowAddModal(false)} />}
