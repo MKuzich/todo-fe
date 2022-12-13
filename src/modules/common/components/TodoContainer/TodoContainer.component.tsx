@@ -64,6 +64,29 @@ export const TodoContainer: React.FC = () => {
     <>
       <MobileHeader />
       <Controls openAddModal={openAddModal} />
+
+      {isDesktop && (
+        <TableContainer component={Paper} elevation={6}>
+          <Table size="small" stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableCell>Todo title</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell align="center">Actions</TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {isSuccess &&
+                data?.todos.map((todo: ITodo) => (
+                  <TableRow key={todo._id}>
+                    <TodoItem todo={todo} />
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
       {isLoading && (
         <Box
           sx={{
@@ -75,27 +98,6 @@ export const TodoContainer: React.FC = () => {
         >
           <CircularProgress />
         </Box>
-      )}
-      {isDesktop && (
-        <TableContainer component={Paper} elevation={6}>
-          <Table size="small" stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell>Todo title</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell align="center">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {isSuccess &&
-                data?.todos.map((todo: ITodo) => (
-                  <TableRow key={todo._id}>
-                    <TodoItem todo={todo} />
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
       )}
       {isMobile && isSuccess && (
         <InfiniteScroll
