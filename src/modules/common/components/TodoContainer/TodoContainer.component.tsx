@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { SwiperSlide } from 'swiper/react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { blueGrey } from '@mui/material/colors';
 import {
   TableContainer,
   Table,
@@ -69,7 +70,14 @@ export const TodoContainer: React.FC = () => {
         <TableContainer component={Paper} elevation={6}>
           <Table size="small" stickyHeader>
             <TableHead>
-              <TableRow>
+              <TableRow
+                sx={{
+                  '& th': {
+                    color: '#fff',
+                    backgroundColor: blueGrey[900],
+                  },
+                }}
+              >
                 <TableCell>Todo title</TableCell>
                 <TableCell>Description</TableCell>
                 <TableCell align="center">Actions</TableCell>
